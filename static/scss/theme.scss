@@ -1,0 +1,107 @@
+@import "../bootstrap/scss/functions";
+
+$white: #ffffff;
+
+$light: #fff9de;
+$dark: #0a0f0a;
+$primary: #1881c7;
+$secondary: #4e17cf;
+$info: #7a9f65;
+$success: #10a103;
+$warning: #f7c104;
+$danger: #e92500;
+
+$body-bg: $primary;
+
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,300;10..48,400;10..48,500;10..48,600;10..48,700;10..48,800&display=swap');
+$font-family-base: "Bricolage Grotesque", sans-serif;
+
+$h1-font-size: 10vw;
+
+@import "../bootstrap/scss/bootstrap";
+
+body {
+    position: relative;
+}
+
+.canvas-cont {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+
+    & #canvas3d {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.bar {
+    height: 100%;
+    width: 0%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: black;
+    z-index: -5;
+}
+
+h1 {
+    letter-spacing: -5px;
+}
+
+#hero {
+    height: 100vh;
+}
+
+#part1,
+#part2 {
+    width: 100%;
+    height: 150vh;
+
+    & .part-info {
+        width: 30%;
+        gap: 40px;
+        padding: 1%;
+    }
+}
+
+#part3 {
+    height: 120vh;
+    padding-bottom: 50px;
+}
+
+.key {
+    display: inline-block;
+    letter-spacing: -2vw;
+    transition: transform 0.2s;
+}
+
+@keyframes pressDown {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .canvas-cont {
+        width: 200vw;
+        transform: scale(0.5);
+        left: auto;
+        top: 25vh;
+    }
+
+    .part-info {
+        width: 100%;
+    }
+
+}
