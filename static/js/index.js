@@ -55,31 +55,48 @@ app
           break;
       }
     })
+    
+    let colorCycleKeyMap = {
+      "red":"mouseUp",
+      "blue":"mouseDown",
+      "green":"mouseHover",
+      "white":"keyDown",
+      "purple":"keyUp"
+    }
+    
+    let colorCycleBgMap = {
+      "red":"#b12026",
+      "blue":"#1881c7",
+      "green":"#5b8f04",
+      "white":"#818181",
+      "purple":"#7432cf"
+    }
 
     const setKeyColor = (color) => {
-    
-      let colorCycleMap = {
-        "red":"mouseUp",
-        "blue":"mouseDown",
-        "green":"mouseHover",
-        "white":"keyDown",
-        "purple":"keyUp"
-      }
 
-      let event = colorCycleMap[color]
+      let event = colorCycleKeyMap[color]
 
       key_ctrl_b.emitEvent(event)
       key_c_b.emitEvent(event)
       key_v_b.emitEvent(event)
       
     }
-          
+
+    const setBgcolor = (color) => {
+
+      let col = colorCycleBgMap[color]
+      gsap.to("body",{backgroundColor:col,duration:.2})
+
+      console.log(col)
+    }
+
     document.getElementById("colorhovertrigger").addEventListener("mouseenter",(event) => {
       let color = colorCycleEvents[colorCycleProgress%colorCycleEvents.length]
 
       setKeyColor(color)
+      setBgcolor(color)
 
-      colorCycleProgress++  
+      colorCycleProgress++
     })
 
     setKeyColor("blue")
@@ -127,16 +144,18 @@ app
     gsap.to("body", {
       scrollTrigger: {
         trigger: "#part3",
-        start: "top 52%",
-        end: "top 52%",
+        start: "top 50%",
+        end: "top 50%",
         scrub: true,
 
         onEnter: () => {
           setKeyColor("white")
+          setTimeout(() => {setBgcolor("red")},200)
         },
 
         onLeaveBack: () => {
           setKeyColor("red")
+          setBgcolor("red")
         }
       }
     })
@@ -179,15 +198,11 @@ app
           start: "top bottom",
           end: "center bottom",
           scrub: true,
-        },/*
 
-        onEnterBack: () => {
-          setKeyColor("red")
-        },
-
-        onLeave: () => {
-          setKeyColor("red")
-        }*/
+          onEnterBack: () => {
+            setKeyColor("red")
+          }
+        }
       })
       
       .to(keyboard.rotation, { x: Math.PI / 36, y: Math.PI / 4 }, 0)
