@@ -1,5 +1,5 @@
-*.bat
-/static/bootstrap
+.DS_Store
+.env
 /static/font
 .replit
 replit.nix
