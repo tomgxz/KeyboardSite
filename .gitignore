@@ -1,5 +1,6 @@
 .DS_Store
 .env
-/static/font
+/site/static/font
+/site/static/bootstrap
 .replit
 replit.nix

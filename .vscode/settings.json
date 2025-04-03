@@ -1,3 +1,14 @@
 {
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "/site/static/css",
+            "savePathReplacementPairs": null
+        }
+    ],
+    "liveSassCompile.settings.includeItems": [
+        "/site/static/scss/build.scss"
+    ],
     "liveServer.settings.root": "/site/",
 }
